@@ -1,0 +1,21 @@
+###User sign up
+POST http://localhost:3001/v1/user
+Content-Type: application/json
+
+{
+    "name":"Vignesh",
+    "company":"Vignesh Tech Limited",
+    "address":"Chennai,Tamil Nadu",
+    "phone":"8056186732",
+    "email":"vicky241097@gmail.com",
+    "password":"Arsenal@2021"
+}
+
+###User sign in
+POST http://localhost:3001/v1/user/login
+Content-Type: application/json
+
+{
+ "email":"vicky241097@gmail.com",
+ "password":"Arsenal@2021"
+}
