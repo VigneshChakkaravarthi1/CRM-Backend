@@ -28,7 +28,7 @@ try{
     }
     else{
         await deleteJWT(authorization)
-        return response.status(403).json({message:"Login is forbidden"})
+        return response.status(403).json({message:" Account is deleted ,Login is forbidden"})
         
     }
 

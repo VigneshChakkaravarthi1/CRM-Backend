@@ -44,7 +44,7 @@ const getJWT = async(key) => {
 };
 
 const deleteJWT = async(key) => {
-    if(!client.isopen)
+    if(!client.isOpen)
     {
         client.connect()
     }

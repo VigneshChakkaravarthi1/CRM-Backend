@@ -21,7 +21,7 @@ Content-Type: application/json
 }
 ###Get a user profile endpoint
 GET http://localhost:3001/v1/user
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2Mjc0NjQwNywiZXhwIjoxNjYyNzQ5MTA3fQ.GB_JpeP3EPWOsa_gNWT1OZpZ-QVDe7MbU_WAtK9FBhU
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2Mjc0ODI0NywiZXhwIjoxNjYyNzQ4MzA3fQ.BY9kMaCZ1sTbX1DnE1fG_0VuRdc5xObihqoAWCFTiVw
 Content-Type: application/json
 
 {
