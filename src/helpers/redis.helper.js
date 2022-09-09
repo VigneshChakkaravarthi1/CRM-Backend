@@ -1,33 +1,61 @@
-const redis=require("redis")
-const client=redis.createClient();
+const redis = require("redis");
+const client = redis.createClient(process.env.REDIS_URL);
 
 
-const setJWT=(key,value)=>
-{
-    const client=redis.createClient();
-    console.log(client.isOpen);
-}
+client.on("error", function (error) {
+  console.error(error);
+});
 
-const getJWT= (key)=>{
+const setJWT = async(key, value) => {
+    if(!client.isOpen)
+    {
+        await client.connect()
+    }
+   try{
+    return await client.set(key,value)
 
-    return new Promise((resolve,reject)=>{
+   }
+   catch(error)
+   {
+    console.log(error)
+    return error
+   }
+  
+};
 
-        try{
-            client.get(key,function(error,response){
-                if(error){reject(error)}
-                resolve(response)
-    
-            })
+const getJWT = async(key) => {
+    if(!client.isOpen)
+    {
+        await client.connect()
+    }
 
-        }
-       catch (error)
-       {
+    try{
+        return await client.get(key)
+
+    }
+    catch(error)
+    {
         console.log(error)
-        reject(error)
-       }
-
-    })
+        return error
+    }
    
-    
-}
-module.exports={setJWT,getJWT}
+   
+ 
+};
+
+const deleteJWT = async(key) => {
+    if(!client.isopen)
+    {
+        client.connect()
+    }
+  try {
+    client.del(key);
+  } catch (error) {
+    console.log(error);
+  }
+};
+module.exports = {
+  setJWT,
+  getJWT,
+  deleteJWT,
+};

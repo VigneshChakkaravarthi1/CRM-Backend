@@ -19,3 +19,17 @@ Content-Type: application/json
  "email":"vicky241097@gmail.com",
  "password":"Arsenal@2021"
 }
+###Get a user profile endpoint
+GET http://localhost:3001/v1/user
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2Mjc0NjQwNywiZXhwIjoxNjYyNzQ5MTA3fQ.GB_JpeP3EPWOsa_gNWT1OZpZ-QVDe7MbU_WAtK9FBhU
+Content-Type: application/json
+
+{
+ "email":"vicky241097@gmail.com",
+ "password":"Arsenal@2021"
+}
+
+###Token Routers
+###Get refreshed token
+GET http://localhost:3001/v1/tokens
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MjY0NzA4MiwiZXhwIjoxNjY1MjM5MDgyfQ.LLsW_KFugsjjQMHeVx2E4zjQ26mIJcT4_WxgegpL0TU  
