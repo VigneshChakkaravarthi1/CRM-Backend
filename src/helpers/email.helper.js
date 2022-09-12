@@ -29,18 +29,38 @@ const send=async(info)=>{
    
 
 }
-const emailProcessor=async(email,pin)=>{
+const emailProcessor=async({email,pin,type})=>{
+    var info =""
+switch(type){
+   
+    case "request-new-password":
+         info ={
+            from: '"CRM Company" ebba.kovacek92@ethereal.email', // sender address
+            to: email, // list of receivers
+            subject: "Reset Pin", // Subject line
+            text: "Here is your password reset pin"+pin+".This pin will expire in 1 day" ,
+            html: `<p> Here is your pin : 
+            <b>${pin}</b></p>`,
+          }
+    break
+    case "password-update-success":
 
-    const info ={
+     info={
         from: '"CRM Company" ebba.kovacek92@ethereal.email', // sender address
         to: email, // list of receivers
-        subject: "Reset Pin", // Subject line
-        text: "Here is your password reset pin"+pin+".This pin will expire in 1 day" ,
-        html: `<p> Here is your pin : 
-        <b>${pin}</b></p>`,
-      }
+        subject: "Password update", // Subject line
+        text: "Your password has been updated successfully ✔✔" ,
+        html: `<p>Your password has been successfully ✔✔</p>`,
+
+    }
+        break;
+
+}
+    
 return await send(info)
 
 }
+
+
 
 module.exports={emailProcessor}
