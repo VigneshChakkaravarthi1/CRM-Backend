@@ -1,6 +1,6 @@
 const express = require("express")
 const router=express.Router();
-const {insertTicket,getTickets}=require("./../model/ticket/Ticket.model")
+const {insertTicket,getTickets,getTicketById,updateClientReply,updateStatusClose,deleteTicket}=require("./../model/ticket/Ticket.model")
 const {userAuthorization}=require("./../middlewares/authorization.middleware")
 
 
@@ -84,6 +84,120 @@ router.get("/",userAuthorization,async(request,response)=>{
     
     
     })
+
+    // Get a particular ticket id of a user
+
+    router.get("/:_id",userAuthorization,async(request,response)=>{
+        
+    
+        try{
+            const {_id}=request.params;
+ 
+            const result = await getTicketById(_id,request.userID)  
+        if(result)
+        {
+            
+            return response.json({status:"success",result:result}) 
+        }
+        else
+        {
+            return response.json({status:"failure",message:"Ticket has not been updated"})
+        }
+        
+        }
+        catch(error)
+        {
+        console.log(error)
+        return response.json({status:"failure",error:error})
+        }
+        
+        
+        })
+        // Update message from client
+        router.put("/:_id",userAuthorization,async(request,response)=>{
+        
+    
+            try{
+                const {message,sender}=request.body
+                const {_id}=request.params;
+                const result = await updateClientReply(_id,message,sender)  
+                console.log("The result is ",result)
+            if(result)
+            {
+                
+                return response.json({status:"success",result:result}) 
+            }
+            else
+            {
+                return response.json({status:"failure",message:"Ticket conversation has been updated"})
+            }
+            
+            }
+            catch(error)
+            {
+            console.log(error)
+            return response.json({status:"failure",error:error})
+            }
+            
+            
+            })
+    
+ // Update message from client
+ router.patch("/close-ticket/:_id",userAuthorization,async(request,response)=>{
+        
+    
+    try{
+        
+        const {_id}=request.params;
+        const result = await updateStatusClose(_id,request.userID)  
+        console.log("The result is ",result)
+    if(result)
+    {
+        
+        return response.json({status:"success",message:"Ticket has been closed successfully"}) 
+    }
+    else
+    {
+        return response.json({status:"failure",message:"Ticket status failed to update"})
+    }
+    
+    }
+    catch(error)
+    {
+    console.log(error)
+    return response.json({status:"failure",error:error})
+    }
     
     
+    })
+    router.delete("/:_id",userAuthorization,async(request,response)=>{
+        
+    
+        try{
+           
+            const {_id}=request.params;
+            const result = await deleteTicket(_id,request.userID)  
+            
+        if(result)
+        {
+            
+            return response.json({status:"success",message:"Ticket has been successfully deleted"}) 
+        }
+        else
+        {
+            return response.json({status:"failure",message:"Ticket deletion did not happen"})
+        }
+        
+        }
+        catch(error)
+        {
+        console.log(error)
+        return response.json({status:"failure",error:error})
+        }
+        
+        
+        })
+
+
+
 module.exports=router

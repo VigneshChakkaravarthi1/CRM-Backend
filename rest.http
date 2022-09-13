@@ -74,3 +74,28 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3
 ###Get tickets created by a particular user
 GET http://localhost:3001/v1/ticket
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MDUwNCwiZXhwIjoxNjYzMDYzMjA0fQ.Na_pV_z5Uz9RkqKITEQn51ucEqXbK-b3-t_dMdM4LHQ
+
+###Get a particular ticket of a user
+GET http://localhost:3001/v1/ticket/632048fa6dc0f7013b4e846f
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MDUwNCwiZXhwIjoxNjYzMDYzMjA0fQ.Na_pV_z5Uz9RkqKITEQn51ucEqXbK-b3-t_dMdM4LHQ
+
+
+###Update conversation details
+PUT http://localhost:3001/v1/ticket/632048fa6dc0f7013b4e846f
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MzQwMSwiZXhwIjoxNjYzMDY2MTAxfQ.avcb_wHZ9UJiFFdNBPyx32YPzc4neyMEhk8x1woTpXM
+
+{
+    "message":"What is the status of this ticket?😊",
+    "sender":"Vignesh"
+}
+
+###Close the ticket
+PATCH  http://localhost:3001/v1/ticket/close-ticket/632048fa6dc0f7013b4e846f
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MzQwMSwiZXhwIjoxNjYzMDY2MTAxfQ.avcb_wHZ9UJiFFdNBPyx32YPzc4neyMEhk8x1woTpXM
+
+###Delete the ticket
+DELETE   http://localhost:3001/v1/ticket/63204a70fedb194c56e7fa0c
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MzQwMSwiZXhwIjoxNjYzMDY2MTAxfQ.avcb_wHZ9UJiFFdNBPyx32YPzc4neyMEhk8x1woTpXM
