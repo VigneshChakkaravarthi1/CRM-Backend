@@ -2,8 +2,7 @@ const express = require("express")
 const router=express.Router();
 const {insertTicket,getTickets,getTicketById,updateClientReply,updateStatusClose,deleteTicket}=require("./../model/ticket/Ticket.model")
 const {userAuthorization}=require("./../middlewares/authorization.middleware")
-
-
+const {createNewTicketValidation,replyNewTicketValidation}=require("./../middlewares/formValidation.middleware")
 
 router.all("/",(req,res,next)=>{
     // res.json({message:"return from ticket router"})
@@ -21,7 +20,7 @@ router.all("/",(req,res,next)=>{
 // 8.Update ticket status//Close , operator response pending, client response pending
 // Delete ticket from 
 
-router.post("/",userAuthorization,async(request,response)=>{
+router.post("/",createNewTicketValidation,userAuthorization,async(request,response)=>{
 // 2.Reveive new ticket data
 
 const {subject,sender,message}=request.body
@@ -143,7 +142,7 @@ router.get("/",userAuthorization,async(request,response)=>{
             })
     
  // Update message from client
- router.patch("/close-ticket/:_id",userAuthorization,async(request,response)=>{
+ router.patch("/close-ticket/:_id",replyNewTicketValidation,userAuthorization,async(request,response)=>{
         
     
     try{
