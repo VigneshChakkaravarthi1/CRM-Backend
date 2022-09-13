@@ -9,12 +9,13 @@ const {authorization}=request.headers
 //1.Verify if JWT is valid
 try{
     const decoded = await verifyAccessJWT(authorization)
+    
   
     if(decoded.email)
     {
         const userID=await getJWT(authorization)
 
-        console.log("The value of user id is",userID)
+        
        
        if(!userID)
        {
@@ -23,7 +24,8 @@ try{
        }
     
        
-       request.userID=userID 
+       request.userID=userID
+
         next()
     }
     else{

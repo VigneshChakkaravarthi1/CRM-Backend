@@ -46,10 +46,11 @@ const getJWT = async(key) => {
 const deleteJWT = async(key) => {
     if(!client.isOpen)
     {
-        client.connect()
+       await client.connect()
     }
   try {
-    client.del(key);
+    
+    await client.del(key)
   } catch (error) {
     console.log(error);
   }

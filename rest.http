@@ -17,11 +17,11 @@ Content-Type: application/json
 
 {
  "email":"vicky241097@gmail.com",
- "password":"Arsenal@2021"
+ "password":"Realmadrid@2021"
 }
 ###Get a user profile endpoint
 GET http://localhost:3001/v1/user
-Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2Mjc0ODI0NywiZXhwIjoxNjYyNzQ4MzA3fQ.BY9kMaCZ1sTbX1DnE1fG_0VuRdc5xObihqoAWCFTiVw
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2Mjk3NjcyNSwiZXhwIjoxNjYyOTc2Nzg1fQ.su_q_W1vWTrVNir5sbJn1xlYXrF1V9ANdY_Xzev8XRM
 Content-Type: application/json
 
 {
@@ -33,3 +33,26 @@ Content-Type: application/json
 ###Get refreshed token
 GET http://localhost:3001/v1/tokens
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MjY0NzA4MiwiZXhwIjoxNjY1MjM5MDgyfQ.LLsW_KFugsjjQMHeVx2E4zjQ26mIJcT4_WxgegpL0TU  
+
+###Password reset end point
+POST http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+ "emailas":"vicky241097@gmail.com"
+
+}
+###Update new password endpoint
+PATCH http://localhost:3001/v1/user/reset-password
+Content-Type: application/json
+
+{
+ "email":"vicky241097@gmail.com",
+ "pin": 91281,
+ "newPassword":"Realmadrid@2021"
+
+}
+
+###User logout endpoint
+DELETE http://localhost:3001/v1/user/logout
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzAzNjcyNiwiZXhwIjoxNjYzMDM5NDI2fQ.kCiBsgwGBMuq7voipaMBi1tlMsCnEQMvfaXmDDn1Gw4
