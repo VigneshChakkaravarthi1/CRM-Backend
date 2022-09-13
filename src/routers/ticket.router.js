@@ -1,7 +1,7 @@
 const express = require("express")
 const router=express.Router();
-const {insertTicket}=require("./../model/ticket/Ticket.model")
-
+const {insertTicket,getTickets}=require("./../model/ticket/Ticket.model")
+const {userAuthorization}=require("./../middlewares/authorization.middleware")
 
 
 
@@ -21,11 +21,12 @@ router.all("/",(req,res,next)=>{
 // 8.Update ticket status//Close , operator response pending, client response pending
 // Delete ticket from 
 
-router.post("/",async(request,response)=>{
+router.post("/",userAuthorization,async(request,response)=>{
 // 2.Reveive new ticket data
+
 const {subject,sender,message}=request.body
 const ticketObject={
-    clientId:"6319ca98db3bc448725d1645",
+    clientId:request.userID,
     subject,
     
     conversation:[
@@ -57,4 +58,32 @@ return response.json({status:"failure",error:error})
 
 })
 
+
+router.get("/",userAuthorization,async(request,response)=>{
+    // 2.Reveive new ticket data
+
+    try{
+        const result = await getTickets(request.userID)
+    
+    if(result)
+    {
+        
+        return response.json({status:"success",result:result}) 
+    }
+    else
+    {
+        return response.json({status:"failure",message:"Ticket has not been updated"})
+    }
+    
+    }
+    catch(error)
+    {
+    console.log(error)
+    return response.json({status:"failure",error:error})
+    }
+    
+    
+    })
+    
+    
 module.exports=router

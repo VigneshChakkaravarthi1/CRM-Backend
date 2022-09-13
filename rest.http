@@ -61,6 +61,7 @@ Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3
 ###Create new ticket endpoint
 POST http://localhost:3001/v1/ticket
 Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MDUwNCwiZXhwIjoxNjYzMDYzMjA0fQ.Na_pV_z5Uz9RkqKITEQn51ucEqXbK-b3-t_dMdM4LHQ
 
 {
     "subject":"Form issues",
@@ -68,3 +69,8 @@ Content-Type: application/json
     "message":"Contact form not working, please fix it ASAP"
 
 }
+
+
+###Get tickets created by a particular user
+GET http://localhost:3001/v1/ticket
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpY2t5MjQxMDk3QGdtYWlsLmNvbSIsImlhdCI6MTY2MzA2MDUwNCwiZXhwIjoxNjYzMDYzMjA0fQ.Na_pV_z5Uz9RkqKITEQn51ucEqXbK-b3-t_dMdM4LHQ

@@ -26,7 +26,7 @@ try{
        
        request.userID=userID
 
-        next()
+        return next()
     }
     else{
         await deleteJWT(authorization)
