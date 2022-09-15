@@ -18,7 +18,12 @@ router.all("/",(req,res,next)=>{
 router.get("/",userAuthorization,async(request,response)=>{
     const _id = request.userID
     const userProfile = await getUserById(_id)
-    return response.json({message:"Valid user id and password",user:userProfile})
+    const {name,email}=userProfile
+    return response.json({message:"Valid user id and password",user:{
+        _id,
+        name,
+        email
+    }})
   
 
 })
@@ -170,10 +175,10 @@ router.post("/login",async(request,response)=>{
         
         try{
             const result=await comparePassword(password,user.password)
-            if(!result){return response.json({error:"error",message:"User id or password is incorrect"})}
+            if(!result){return response.json({status:"error",message:"User id or password is incorrect"})}
             const accessJWT =await createAccessJWT(user.email,`${user._id}`)
             const refreshJWT=await createRefreshJWT(user.email,`${user._id}`)
-            return response.json({message:"User logged in successfully",accessJWT:accessJWT,refreshJWT:refreshJWT})
+            return response.json({status:"success",message:"Login Successfull",accessJWT:accessJWT,refreshJWT:refreshJWT})
 
         }
         catch (error){
