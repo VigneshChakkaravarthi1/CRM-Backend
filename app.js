@@ -7,7 +7,7 @@ const helmet= require("helmet")
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const port =process.env.PORT || 3001;
-
+app.use(cors())
 mongoose.connect("mongodb://localhost:27017/CRM_Database",{})
 if(process.env.NODE_ENV!=="production")
 {const mdB=mongoose.connection;

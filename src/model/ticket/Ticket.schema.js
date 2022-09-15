@@ -8,6 +8,12 @@ clientId:{
     required:true,
     default:""
 },
+subject:{
+    type:String,
+    maxlength:50,
+    minlength:3,
+    required:true,
+},
 openAt:{
     type:Date,
     required:true,

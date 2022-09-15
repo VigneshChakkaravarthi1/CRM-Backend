@@ -170,10 +170,9 @@ router.post("/login",async(request,response)=>{
         
         try{
             const result=await comparePassword(password,user.password)
-            if(!result){return response.json({message:"User id or password is incorrect"})}
+            if(!result){return response.json({error:"error",message:"User id or password is incorrect"})}
             const accessJWT =await createAccessJWT(user.email,`${user._id}`)
             const refreshJWT=await createRefreshJWT(user.email,`${user._id}`)
-            console.log("accessJWT",accessJWT,"refreshJWT",refreshJWT,result)
             return response.json({message:"User logged in successfully",accessJWT:accessJWT,refreshJWT:refreshJWT})
 
         }

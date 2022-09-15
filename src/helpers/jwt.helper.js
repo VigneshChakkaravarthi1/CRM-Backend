@@ -7,7 +7,7 @@ const {storeRefreshJWT}=require("./../model/user/User.model")
 const createAccessJWT=async(email,_id)=>{
     
     try{
-        const accessJWT=jwt.sign({email},process.env.JWT_ACCESS_SECRET,{expiresIn:'45m'})
+        const accessJWT=jwt.sign({email},process.env.JWT_ACCESS_SECRET,{expiresIn:'500m'})
         const result=await setJWT(accessJWT,_id)
     
         return new Promise((resolve,reject)=>{resolve(accessJWT)})
@@ -15,7 +15,7 @@ const createAccessJWT=async(email,_id)=>{
     }
     catch(error)
     {
-        
+        console.log(error)
     return new Promise((resolve,reject)=>{reject(error)})
       
     }
